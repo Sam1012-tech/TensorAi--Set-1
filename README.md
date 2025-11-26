@@ -78,16 +78,20 @@ f(n) = g(n) + h(n)
 
 ### Cost Function
 ```python
+ import random
+
 def get_cell_cost(x, y):
     cell_type = self.grid[y][x]['type']
+
     if cell_type == 'pit':
-        return float('inf')  # Avoid pits
+        return float('inf')        # avoid pits completely
     elif cell_type == 'traffic_light':
-        return 5  # Higher cost due to wait
+        return 5                   # fixed cost
     elif cell_type == 'cow':
-        return 10  # Higher cost (or avoid completely)
+        return 10                  # fixed cost
     else:
-        return 1  # Normal cell
+        return self.grid[y][x]['weight']  # random cost ONLY for normal cells
+
 ```
 
 ### Manhattan Distance Heuristic
@@ -146,8 +150,11 @@ When you press **SPACE**, you should see:
 ```
 === Executing A* Pathfinding ===
 Path found: [(0, 4), (1, 4), (2, 4), (2, 3), (3, 3), ...]
+(0,4): f(n)= g(n) +h(n)= 10+300=310
+....
 ```
 Agent should then automatically navigate to the goal.
+
 
 ---
 
