@@ -5,7 +5,7 @@
 
 ## Problem Statement
 
-You are required to implement an **A\* pathfinding algorithm** for a Bangalore-themed variant of the classic Wumpus World. The agent must navigate a 5×10 grid filled with real-world Bangalore obstacles to reach the goal safely.
+You are required to implement an **A\* pathfinding algorithm** for a Bangalore-themed variant of the classic Wumpus World. The agent must navigate a 5×10 grid filled with real-world Bangalore obstacles to reach the goal safely. The agent must take all the environmental elements into account(this includes the cell costs) to find the optimal path to the goal cell.
 
 ---
 
@@ -18,12 +18,12 @@ You are required to implement an **A\* pathfinding algorithm** for a Bangalore-t
 
 ### Environmental Elements
 
-| Element | Percept | Effect |
-|---------|---------|--------|
-| **Traffic Light** | Adjacent cells detect "light" indicator | Agent must wait (nested loop delay) |
-| **Cow** | Adjacent cells detect "moo" sound | Agent resets to start position |
-| **Pit** | Adjacent cells detect "breeze" | **Game Over** if entered |
-| **Goal** | No percept | **Win** if reached |
+| Element | Percept | Effect |cost|
+|---------|---------|--------|------------|
+| **Traffic Light** | Adjacent cells detect "light" indicator | Wait cost → passable but slower   |5|
+| **Cow** | Adjacent cells detect "moo" sound | Adjacent cell has cow →If  mark as forbidden → return to start → re-compute A* |10|
+| **Pit** | Adjacent cells detect "breeze" | **Game Over** if entered, Adjacent cells are risky → high cost, avoid unless necessary|infinite|
+| **Goal** | No percept | **Win** if reached |-|
 
 ---
 
@@ -32,12 +32,12 @@ You are required to implement an **A\* pathfinding algorithm** for a Bangalore-t
 The starter code (`wumpus_world.py`) provides:
 
 - ✅ Pygame visualization of 5×10 grid
+- ✅ Randomized weights of each grid (0-100)
 - ✅ Random world generation (using your team's unique seed)
 - ✅ Percept detection system (breeze, moo, light)
 - ✅ Traffic light delay mechanism (nested loop)
 - ✅ Cow collision → reset to start
 - ✅ Pit detection → Game Over
-- ✅ Manual movement controls (arrow keys)
 - ✅ Game state management
 
 ---
@@ -58,8 +58,7 @@ The starter code (`wumpus_world.py`) provides:
    - **Pits:** Must avoid completely (entering = Game Over)
    - **Traffic Lights:** Can pass through but cost more (suggest cost = 5)
    - **Cows:** Strategy choice:
-     - Option A: Avoid cows completely
-     - Option B: Handle collision and replan from start
+     - Option: Handle collision and replan from start and mark path as unusable. Use a different path.
 4. **Return value:**
    - List of (x, y) tuples representing path
    - Example: `[(0, 4), (1, 4), (2, 4), ...]`
@@ -73,7 +72,7 @@ The starter code (`wumpus_world.py`) provides:
 ```
 f(n) = g(n) + h(n)
 ```
-- **g(n)** = actual cost from start to node n
+- **g(n)** = actual cost from start to node n(Assume the randomized weights to be the actual costs)
 - **h(n)** = heuristic estimate from n to goal (use Manhattan distance)
 - **f(n)** = total estimated cost
 
@@ -106,8 +105,7 @@ def heuristic(pos, goal):
 ⚠️ **Cow Collision Handling**
 - If your path crosses a cow, the agent resets to start
 - You need to either:
-  - Avoid cows entirely in your pathfinding
-  - OR detect collision and replan from start position
+  - Detect collision and replan from start position
 
 ⚠️ **Path Not Found**
 - If no valid path exists, set `self.message = "Path Not Found"`
@@ -127,7 +125,7 @@ python wumpus_world.py
 ```
 
 ### Controls
-- **Arrow Keys:** Manual movement (for testing)
+- **Arrow Keys:** Manual movement (you are allowed to use manual movements for testing,however the final solution must be automated)
 - **SPACE:** Execute A\* pathfinding (once implemented)
 - **R:** Reset world with same seed
 - **ESC:** Quit
