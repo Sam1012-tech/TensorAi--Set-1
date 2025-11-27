@@ -16,7 +16,7 @@ Build an intelligent agent that analyzes a database and automatically sends a co
 
 ## 📋 Problem Statement
 
-You are given a SQLite database file (`data.db`) containing business data. Your task is to:
+You are given a database file (`sales_agent.db`) containing business data. Your task is to:
 
 1. **Analyze the database** - Understand schema, relationships, and data patterns
 2. **Generate insights** - Extract meaningful statistics and trends
@@ -28,7 +28,7 @@ You are given a SQLite database file (`data.db`) containing business data. Your 
 
 ## 🗂️ What You'll Receive
 
-- `data.db` - SQLite database file (will be provided)
+- `sales_agent.db` -  database file (will be provided)
 - Email credentials/configuration (will be provided during event)
 - This README with requirements
 
@@ -41,7 +41,7 @@ You are given a SQLite database file (`data.db`) containing business data. Your 
 Create a Python script (`db_analyzer.py`) that:
 
 1. **Connects to database**
-   - Read `data.db` file
+   - Read `sales_agent.db` file
    - Explore tables and schema
    - Handle any database structure
 
@@ -74,7 +74,7 @@ Create a Python script (`db_analyzer.py`) that:
 
 ```python
 # Your script should be runnable like this:
-python db_analyzer.py --db data.db --email recipient@example.com
+python db_analyzer.py --db salees.db --email recipient@example.com
 ```
 
 ### Suggested Libraries
@@ -324,7 +324,7 @@ sqlite3 data.db
 medium/
 ├── README.md              # This file
 ├── db_analyzer.py         # Your main script
-├── data.db               # Database (provided)
+├── sales_agent.db               # Database (provided)
 ├── requirements.txt       # Dependencies
 └── output/               # Generated files (optional)
     ├── report.html or report.pdf
