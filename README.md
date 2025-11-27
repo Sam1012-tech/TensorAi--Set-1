@@ -16,7 +16,7 @@ Build an intelligent agent that analyzes a database and automatically sends a co
 
 ## 📋 Problem Statement
 
-You are given a database file (`sales_agent.db`) containing business data. Your task is to:
+You are given a SQLite database file (`data.db`) containing business data. Your task is to:
 
 1. **Analyze the database** - Understand schema, relationships, and data patterns
 2. **Generate insights** - Extract meaningful statistics and trends
@@ -28,7 +28,7 @@ You are given a database file (`sales_agent.db`) containing business data. Your 
 
 ## 🗂️ What You'll Receive
 
-- `sales_agent.db` -  database file (will be provided)
+- `data.db` - SQLite database file (will be provided)
 - Email credentials/configuration (will be provided during event)
 - This README with requirements
 
@@ -41,7 +41,7 @@ You are given a database file (`sales_agent.db`) containing business data. Your 
 Create a Python script (`db_analyzer.py`) that:
 
 1. **Connects to database**
-   - Read `sales_agent.db` file
+   - Read `data.db` file
    - Explore tables and schema
    - Handle any database structure
 
@@ -74,7 +74,7 @@ Create a Python script (`db_analyzer.py`) that:
 
 ```python
 # Your script should be runnable like this:
-python db_analyzer.py --db salees.db --email recipient@example.com
+python db_analyzer.py --db data.db --email recipient@example.com
 ```
 
 ### Suggested Libraries
@@ -128,6 +128,16 @@ df.isnull().sum()
 
 ## 📧 Email Format
 
+Your task is to build a Sales Analysis Email Agent that:
+
+1. Reads data from the provided SQLite . db file
+
+2. Performs sales analytics
+
+3. Generates a PDF report with charts
+
+4. Sends an email summary + PDF attachment in the required format.
+
 ### Subject
 ```
 Database Analysis Report - [Your Team Name]
@@ -149,7 +159,7 @@ Please find the automated database analysis report below.
 2. [Insight 2]
 3. [Insight 3]
 
-=== VISUALIZATIONS ===
+ PDF( report with charts  Proffesional  business report with visualization and chart ) 
 [Attached: chart1.png, chart2.png, chart3.png]
 
 Best regards,
@@ -324,7 +334,7 @@ sqlite3 data.db
 medium/
 ├── README.md              # This file
 ├── db_analyzer.py         # Your main script
-├── sales_agent.db               # Database (provided)
+├── data.db               # Database (provided)
 ├── requirements.txt       # Dependencies
 └── output/               # Generated files (optional)
     ├── report.html or report.pdf
