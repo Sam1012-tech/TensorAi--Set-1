@@ -61,7 +61,7 @@ Build an intelligent agent that analyzes any  database and automatically generat
 - Automate email delivery with attachments
 
 *Skills Tested:*
-- SQL queries and database navigation
+- Queries and database navigation
 - Data analysis with pandas
 - Data visualization (matplotlib/seaborn)
 - Report generation
