@@ -1,4 +1,4 @@
-# AI CODEFIX 2025
+# AI CODEFIX 2025-26
 
 ## The Ultimate AI-Resistant Coding Competition
 
