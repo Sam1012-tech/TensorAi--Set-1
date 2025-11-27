@@ -51,7 +51,7 @@ A classic AI problem reimagined. Debug a buggy A* pathfinding agent that must na
 
 *Domain*: Data Analysis & Automation
 
-Build an intelligent agent that analyzes any SQLite database and automatically generates a comprehensive report with visualizations, then emails it.
+Build an intelligent agent that analyzes any  database and automatically generates a comprehensive report with visualizations, then emails it.
 
 *What You'll Do:*
 - Connect to and explore an unknown database schema
